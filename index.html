@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-3.1.1.js"></script>
+		<script src="bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			.ipt {
+				width: 200px;
+			}
+			li:hover{
+				cursor: pointer;
+				background: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="btn-group">
+			<!--<button type="button" class="btn btn-default">左</button>
+			<button type="button" class="btn btn-default">中</button>
+			<button type="button" class="btn btn-default">右</button>-->
+			<input type="text" class="btn btn-default ipt" id="ip1" />
+			<div class="btn-group">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn1">
+					<!--下拉菜单-->
+					<span class="caret"  id="btn1"></span>
+				</button>
+				<ul class="dropdown-menu" id="ul1">
+					<li>10万</li>		
+					<li>11万</li>			
+					<li>12万</li>				
+					<li>13万</li>				
+					<li>14万</li>
+				</ul>
+			</div>
+			<br />
+			<br />
+			<br />
+			<input type="text" class="btn btn-default ipt" id="ip2" />
+			<div class="btn-group">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn2">
+					<!--下拉菜单-->
+					<span class="caret" id="btn2"></span>
+				</button>
+				<ul class="dropdown-menu" id="ul2">
+					<li>5个月</li>
+					<li>10个月</li>	
+					<li>1年</li>
+					<li>3年</li>
+					<li>5年</li>
+					<li>8年</li>	
+				</ul>
+			</div>
+		</div>
+
+	</body>
+	<script>
+		window.onload = function() {
+			var btn1 = document.getElementById("btn1");
+			var btn2 = document.getElementById("btn2");
+			var ip1 = document.getElementById("ip1");
+			var ip2 = document.getElementById("ip2");
+			var ul1 = document.getElementById("ul1");
+			var ul2 = document.getElementById("ul2");
+			var lis = ul1.getElementsByTagName("li");
+			var liss = ul2.getElementsByTagName("li");
+			btn1.onclick = function() {
+				for(var i = 0; i < lis.length; i++) {
+					lis[i].index = i;
+					lis[i].onclick = function() {
+						console.log(lis[this.index].innerHTML)
+						ip1.value = lis[this.index].innerHTML;
+					}
+				}
+			}
+			btn2.onclick = function() {
+				for(var i = 0; i < liss.length; i++) {
+					liss[i].index = i;
+					liss[i].onclick = function() {
+						console.log(liss[this.index].innerHTML)
+						ip2.value = liss[this.index].innerHTML;
+					}
+				}
+			}
+
+		}
+	</script>
+
+</html>
